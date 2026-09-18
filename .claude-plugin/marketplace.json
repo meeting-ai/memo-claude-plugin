@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "meeting-ai",
+  "description": "Meeting.ai plugin for Claude Code and Cowork, published by Meeting.ai.",
+  "owner": {
+    "name": "Meeting.ai",
+    "url": "https://meeting.ai"
+  },
+  "plugins": [
+    {
+      "name": "meeting-ai",
+      "source": "./",
+      "description": "Meeting.ai is the AI that works before, during, and after your meeting. Record calls, read and edit notes, combine meetings into recaps, export, share, and create Visual Notes."
+    }
+  ]
+}

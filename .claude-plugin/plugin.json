@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "meeting-ai",
+  "displayName": "Meeting.ai",
+  "version": "1.0.0",
+  "description": "Meeting.ai is the AI that works before, during, and after your meeting. It prepares decks and research before, records and writes the notes during, and turns what was actually said into minutes, documents, spreadsheets, follow-up decks, audio briefs, and Visual Notes after.",
+  "author": {
+    "name": "Meeting.ai",
+    "url": "https://meeting.ai"
+  },
+  "homepage": "https://meeting.ai",
+  "repository": "https://github.com/meeting-ai/memo-claude-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "meetings",
+    "meeting-notes",
+    "transcripts",
+    "notetaker",
+    "visual-notes",
+    "productivity",
+    "work-assistant",
+    "mcp"
+  ],
+  "mcpServers": {
+    "meeting-ai": {
+      "type": "http",
+      "url": "https://mcp.meeting.ai/mcp"
+    }
+  }
+}
