@@ -1,8 +1,14 @@
 ---
+name: meeting-ai-visual-notes
 description: Use when the user wants a Visual Note, an infographic-style one-page summary image, whether from a Meeting.ai meeting, from several meetings, or from any text or topic they supply. Also use to redraw a meeting's own visual note after its notes changed.
 ---
 
 # Visual Notes
+
+> **Requires the Meeting.ai MCP server.** This skill calls its tools. If `workspace_list` is not
+> available in this session, stop and follow the `meeting-ai-setup` skill. Do not guess or invent
+> results. Tool names can carry a prefix, for example
+> `mcp__plugin_meeting-ai_meeting-ai__workspace_list` in Claude Code.
 
 A Visual Note is a one-page, house-styled image that summarizes content visually. Meeting.ai
 draws one for every finished meeting. Through Claude the user can also create one from any
@@ -47,6 +53,10 @@ current notes and replaces the visual note on the meeting itself. `recipe_visual
 contrast, creates a new standalone image in Drive and does not touch the meeting.
 
 ## Cost and repeats
+
+`recipe_visual_note` always saves to the active workspace. It does not accept
+`workspace_id`. Check the active workspace with `workspace_list` first. If the content comes
+from a different workspace, ask the user before you change the active workspace.
 
 Every call spends the user's coins and creates a new image. Confirm before generating, and
 do not regenerate to "try again" unless the user asks. `JOB_PENDING` is not a reason to call again.

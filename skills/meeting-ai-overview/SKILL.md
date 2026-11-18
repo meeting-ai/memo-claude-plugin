@@ -1,12 +1,18 @@
 ---
+name: meeting-ai-overview
 description: Use when the user asks what Meeting.ai can do, or asks about their meetings, notes, transcripts, action items, contacts, Drive files, exports, tags, sharing, or workspaces in Meeting.ai. Covers the everyday reading tools plus export, media generation, contacts, Drive, and workspace switching. For recording a meeting, editing notes, or Visual Notes, the dedicated skills go deeper.
 ---
 
 # Meeting.ai in Claude
 
-Meeting.ai is the AI that works before, during, and after your meeting. It prepares decks
-and research before, records and writes the notes during, and turns what was actually said
-into minutes, documents, spreadsheets, follow-up decks, audio briefs, and Visual Notes after.
+> **Requires the Meeting.ai MCP server.** This skill calls its tools. If `workspace_list` is not
+> available in this session, stop and follow the `meeting-ai-setup` skill. Do not guess or invent
+> results. Tool names can carry a prefix, for example
+> `mcp__plugin_meeting-ai_meeting-ai__workspace_list` in Claude Code.
+
+Meeting.ai records meetings and writes the notes. Through these tools Claude finds, reads,
+edits, exports, and shares those notes, and creates Visual Notes, images, and audio. Decks,
+research, and spreadsheets are made in the Meeting.ai app, not through these tools.
 
 Through this connector Claude works on the user's meetings for them. When the user asks what
 they can do, explain these in plain words:
@@ -52,8 +58,11 @@ meeting must be finished.
 
 ## Sharing and tags
 
-- `meetings_share` turns on the public link, PIN-protected by default. Pass
-  `require_pin: false` only on explicit request. Email sharing lives in the web app.
+- `meetings_share` turns on the public link, PIN-protected by default. The link shows the
+  notes and, by default, the transcript. Tell the user this before you share. When the reply
+  has a `pin`, give the user the PIN with the link. Pass `require_pin: false` only on
+  explicit request. Removing an existing PIN also requires `remove_existing_pin: true` and
+  the owner's explicit request. Email sharing lives in the web app.
 - `meetings_tag` and `drive_tag` apply tags that already exist. They never create tags. An
   unknown name returns the available tags. Tags are personal to the user.
 
@@ -65,8 +74,9 @@ contact's meetings.
 
 ## Drive
 
-`drive_search` lists or searches files with tags, size, owner, and an `etag`. `drive_rename`
-renames a file the user owns; pass the `etag` as `if_match` so a concurrent change is refused
+`drive_search` lists or searches files with tags, size, owner, and an `etag`. Give the user
+the file name, not the returned link: the file page is not live yet. `drive_rename` renames
+a file the user owns; pass the `etag` as `if_match` so a concurrent change is refused
 rather than overwritten. Uploading, deleting, and sharing files stay in the web app.
 
 ## Media
@@ -91,7 +101,10 @@ that starts and charges a new generation. Do one of these:
 Errors from `media_job_status`:
 
 - `NOT_FOUND`: this account has no job with this `job_id`, or the result expired.
-- `GENERATION_DECLINED`: no file was made. Tell the user. Generate again only if the user asks.
+- `GENERATION_DECLINED`: no usable file was made. A job that failed is not charged, but a job that
+  finished without usable media is charged. Give the user the message from the server, which says
+  whether the call was charged. Do not tell the user that nothing was charged unless the message
+  says so. Generate again only if the user asks.
 - `DELIVERY_FAILED`: see the tool errors in Style.
 
 ## Permissions
@@ -100,11 +113,19 @@ Editing notes, sharing, stopping a recording, and renaming Drive files are **own
 Check `role` first and say so when the user is not the owner. Tagging works on any meeting
 the user can see.
 
+For a meeting that someone else owns, the owner's download settings decide whether its notes
+or transcript can be exported. A refusal there is not a bug. Tell the user.
+
 ## Workspaces
 
 Tools default to this connection's active workspace. `workspace_list` shows all of them;
 `workspace_set_active` changes the default for this connection only. Pass `workspace_id` on
 a single call for a one-off.
+
+`media_image_gen`, `media_audio_gen`, and `recipe_visual_note` do not accept `workspace_id`.
+They spend the user's coins and always save to the active workspace. Before you call one,
+check the active workspace with `workspace_list`. If the content comes from a different
+workspace, ask the user before you change the active workspace.
 
 ## Style
 
