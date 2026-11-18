@@ -1,8 +1,14 @@
 ---
+name: meeting-ai-edit-notes
 description: Use when the user wants to edit, rewrite, tighten, or restructure the notes of a Meeting.ai meeting, rename a meeting, or combine several meetings into one summary, weekly digest, or project recap and save it back into Meeting.ai.
 ---
 
 # Edit notes and combine meetings
+
+> **Requires the Meeting.ai MCP server.** This skill calls its tools. If `workspace_list` is not
+> available in this session, stop and follow the `meeting-ai-setup` skill. Do not guess or invent
+> results. Tool names can carry a prefix, for example
+> `mcp__plugin_meeting-ai_meeting-ai__workspace_list` in Claude Code.
 
 Meeting.ai writes the first draft of every meeting's notes. Through Claude the user can
 improve one meeting's notes, or pull several meetings together into one summary. Edits are
@@ -48,6 +54,8 @@ that record. The recap belongs in the reply or in a Visual Note, not inside a me
 
 ## Sharing the result
 
-`meetings_share` turns on a public link for one meeting. It is PIN-protected by default;
-only pass `require_pin: false` when the user asks for an open link. Sharing by email is done
-in the web app.
+`meetings_share` turns on a public link for one meeting. The link shows the notes and, by
+default, the transcript. Tell the user this before you share. It is PIN-protected by default;
+only pass `require_pin: false` when the user asks for an open link. Removing an existing PIN
+also requires `remove_existing_pin: true` and the owner's explicit request. Sharing by email
+is done in the web app. When the reply has a `pin`, give it to the user with the link.

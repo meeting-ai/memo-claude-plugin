@@ -1,8 +1,14 @@
 ---
+name: meeting-ai-record-meeting
 description: Use when the user wants Meeting.ai to record, join, or take notes for an online meeting (Zoom, Google Meet, Microsoft Teams), transcribe a recording, check whether a recording is done, or stop a recording. Also use when the user asks how to get a meeting into Meeting.ai.
 ---
 
 # Create notes from an online meeting
+
+> **Requires the Meeting.ai MCP server.** This skill calls its tools. If `workspace_list` is not
+> available in this session, stop and follow the `meeting-ai-setup` skill. Do not guess or invent
+> results. Tool names can carry a prefix, for example
+> `mcp__plugin_meeting-ai_meeting-ai__workspace_list` in Claude Code.
 
 Meeting.ai records the meeting and writes the notes for you. There are two ways to get a
 meeting in through Claude, and a few more through the Meeting.ai apps. Explain the options
@@ -43,7 +49,8 @@ Check when the user asks, or suggest they come back after the meeting ends.
 
 `meetings_stop` makes the notetaker leave a live call and finalises the meeting from what was
 captured so far. Only the meeting owner can do this, and it only works while the notetaker
-is in the call. Recordings from uploaded files are not stopped this way.
+is in the call. Meetings from an uploaded file or recorded in the Meeting.ai mobile or web app
+are not stopped this way.
 
 ## Other ways to record, outside Claude
 

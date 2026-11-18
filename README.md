@@ -2,13 +2,13 @@
 
 ![Meeting.ai in a meeting room, with the Meeting.ai notetaker on the table](assets/banner.webp)
 
-Meeting.ai is the AI that works before, during, and after your meeting. It prepares decks and
-research before, records and writes the notes during, and turns what was actually said into
-minutes, documents, spreadsheets, follow-up decks, audio briefs, and Visual Notes after.
+Meeting.ai is the AI that works before, during, and after your meeting. It records your calls
+and writes the notes.
 
 This plugin brings that into Claude. Once connected, you talk to Claude about your meetings
 the way you would talk to a colleague who sat in every one of them: ask what happened, ask
-what was decided, ask for it written up differently, ask for a picture of it.
+what was decided, ask for it written up differently, ask for a picture of it. Decks, research,
+and spreadsheets are made in the Meeting.ai app, not through this plugin.
 
 ## Install
 
@@ -36,8 +36,8 @@ The first time Claude reaches for a Meeting.ai tool, it asks you to sign in. Run
 Sign in with the account you use for the Meeting.ai app and approve the connection.
 
 That is the whole setup. No API key, nothing to paste. The plugin stores nothing on its own;
-Meeting.ai's login handles it, and you can revoke the connection any time from Connected
-Apps in the Meeting.ai web app. If you don't have an account yet, create one at
+Meeting.ai's login handles it, and you can revoke the connection any time in the Meeting.ai
+web app under Settings › MCP & CLI. If you don't have an account yet, create one at
 [meeting.ai](https://meeting.ai).
 
 ## Try it
@@ -58,11 +58,17 @@ generate an image from a prompt, and switch between your workspaces. You do not 
 learn any of that up front. Ask for what you want in plain words, and Claude uses the right
 tool or tells you it is done in the web app instead.
 
-Some actions, such as recording, exporting, Visual Notes, and media generation, use your
-Meeting.ai subscription or coins. Claude mentions this before doing one. If your account has
+Some actions, such as recording, Visual Notes, and media generation, use your Meeting.ai
+subscription or coins. Claude mentions this before doing one. If your account has
 no active subscription or coins, Claude tells you and stops.
 A long generation can continue after Claude's reply. It can be charged, and Meeting.ai
 saves the file to your Drive when it is ready. A Drive limit can stop that save.
+Exports cost no coins. An export saves a file to your Drive, so a storage-debt limit can
+refuse it.
+
+When you ask Claude to share a meeting, it turns on a public link. The link shows the notes
+and, by default, the transcript. It has a PIN by default, and Claude gives you the PIN with the
+link. It removes the PIN only if you ask.
 
 ## What is in this repository
 
