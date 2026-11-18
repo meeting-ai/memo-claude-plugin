@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "meeting-ai",
   "displayName": "Meeting.ai",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Meeting.ai is the AI that works before, during, and after your meeting. It prepares decks and research before, records and writes the notes during, and turns what was actually said into minutes, documents, spreadsheets, follow-up decks, audio briefs, and Visual Notes after.",
   "author": {
     "name": "Meeting.ai",

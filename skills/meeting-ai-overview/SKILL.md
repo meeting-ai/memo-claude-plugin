@@ -75,6 +75,25 @@ rather than overwritten. Uploading, deleting, and sharing files stay in the web 
 audio file. Both save to Drive, return a login-required link, spend the user's coins, and
 create a new file every call. Confirm before repeating.
 
+A long generation can return the tool error `JOB_PENDING` with `data.job_id`. This is not a
+failure. The generation continues and can be charged. The file goes to the Drive of the
+workspace that was active when the generation started. **Do not call the media tool again**:
+that starts and charges a new generation. Do one of these:
+
+- Tell the user that Meeting.ai saves the file to Drive when it is ready.
+- Call `media_job_status` with the `job_id`. It costs nothing. When the file is saved, it
+  returns `drive_link` and `file_name`, and it can also return the image. If it returns
+  `JOB_PENDING` again, the file is not ready. Wait before you call it again. Do not call it in
+  a fast loop.
+
+`recipe_visual_note` can return `JOB_PENDING` too. Use the same steps.
+
+Errors from `media_job_status`:
+
+- `NOT_FOUND`: this account has no job with this `job_id`, or the result expired.
+- `GENERATION_DECLINED`: no file was made. Tell the user. Generate again only if the user asks.
+- `DELIVERY_FAILED`: see the tool errors in Style.
+
 ## Permissions
 
 Editing notes, sharing, stopping a recording, and renaming Drive files are **owner only**.
@@ -92,3 +111,7 @@ a single call for a one-off.
 Use product words: workspace, meeting, notes, transcript, Drive, Visual Note. Give titles and
 dates, not ids. On a fixable error, follow its instructions once; do not loop. When a tool
 says the account has no coins or no active subscription, relay the message and stop.
+
+For `JOB_PENDING`, follow the steps in Media. Do not repeat the call.
+For `DELIVERY_FAILED`, the media was generated and charged, but it was not saved to Drive.
+Tell the user the reason from the message and stop.

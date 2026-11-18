@@ -61,6 +61,8 @@ tool or tells you it is done in the web app instead.
 Some actions, such as recording, exporting, Visual Notes, and media generation, use your
 Meeting.ai subscription or coins. Claude mentions this before doing one. If your account has
 no active subscription or coins, Claude tells you and stops.
+A long generation can continue after Claude's reply. It can be charged, and Meeting.ai
+saves the file to your Drive when it is ready. A Drive limit can stop that save.
 
 ## What is in this repository
 
