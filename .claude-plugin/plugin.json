@@ -3,7 +3,7 @@
   "name": "meeting-ai",
   "displayName": "Meeting.ai",
   "version": "1.0.2",
-  "description": "Meeting.ai is the AI that works before, during, and after your meeting. Record calls, read and edit notes and transcripts, combine meetings into recaps, export, share, and create Visual Notes.",
+  "description": "Meeting.ai is the AI that works before, during, and after your meeting. Record calls, read transcripts, read and edit notes, combine meetings into recaps, export, share, and create Visual Notes.",
   "author": {
     "name": "Meeting.ai",
     "url": "https://meeting.ai"
