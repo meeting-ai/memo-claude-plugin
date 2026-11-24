@@ -11,7 +11,7 @@ description: Use when the user asks what Meeting.ai can do, or asks about their 
 > `mcp__plugin_meeting-ai_meeting-ai__workspace_list` in Claude Code.
 
 Meeting.ai records meetings and writes the notes. Through these tools Claude finds, reads,
-edits, exports, and shares those notes, and creates Visual Notes, images, and audio. Decks,
+edits, exports, and shares those notes, and creates Visual Notes and images. Decks,
 research, and spreadsheets are made in the Meeting.ai app, not through these tools.
 
 Through this connector Claude works on the user's meetings for them. When the user asks what
@@ -28,7 +28,7 @@ they can do, explain these in plain words:
 - **Export.** PDF or Markdown to the user's Drive.
 - **Share and tag.** Public link with PIN, personal tags.
 - **Contacts and Drive.** Who the user met, and the files in their workspace.
-- **Generate media.** Images and spoken audio from text.
+- **Generate media.** Images from text.
 
 Some actions use the user's coins or subscription. Mention that in a few words before doing
 one, so the user is never surprised.
@@ -81,9 +81,8 @@ rather than overwritten. Uploading, deleting, and sharing files stay in the web 
 
 ## Media
 
-`media_image_gen` creates an image from a prompt; `media_audio_gen` reads text aloud into an
-audio file. Both save to Drive, return a login-required link, spend the user's coins, and
-create a new file every call. Confirm before repeating.
+`media_image_gen` creates an image from a prompt. It saves to Drive, returns a login-required
+link, spends the user's coins, and creates a new file every call. Confirm before repeating.
 
 A long generation can return the tool error `JOB_PENDING` with `data.job_id`. This is not a
 failure. The generation continues and can be charged. The file goes to the Drive of the
@@ -122,7 +121,7 @@ Tools default to this connection's active workspace. `workspace_list` shows all 
 `workspace_set_active` changes the default for this connection only. Pass `workspace_id` on
 a single call for a one-off.
 
-`media_image_gen`, `media_audio_gen`, and `recipe_visual_note` do not accept `workspace_id`.
+`media_image_gen` and `recipe_visual_note` do not accept `workspace_id`.
 They spend the user's coins and always save to the active workspace. Before you call one,
 check the active workspace with `workspace_list`. If the content comes from a different
 workspace, ask the user before you change the active workspace.
