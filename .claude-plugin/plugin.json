@@ -11,7 +11,7 @@
   "homepage": "https://meeting.ai",
   "repository": "https://github.com/meeting-ai/memo-claude-plugin",
   "license": "Apache-2.0",
-  "privacyPolicyUrl": "https://meeting.ai/en/privacy",
+  "privacyPolicyUrl": "https://meeting.ai/privacy",
   "keywords": [
     "meetings",
     "meeting-notes",
