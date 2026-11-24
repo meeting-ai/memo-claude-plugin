@@ -54,7 +54,7 @@ Once connected, ask in plain words. Three to start with:
 
 Once you are connected, Claude also knows how to tag meetings and Drive files with the tags
 you already use, rename files, look up and tidy contacts,
-generate an image from a prompt, and switch between your workspaces. You do not need to
+and switch between your workspaces. You do not need to
 learn any of that up front. Ask for what you want in plain words, and Claude uses the right
 tool or tells you it is done in the web app instead.
 
