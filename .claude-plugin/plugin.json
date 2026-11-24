@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "meeting-ai",
   "displayName": "Meeting.ai",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Meeting.ai is the AI that works before, during, and after your meeting. Record calls, read transcripts, read and edit notes, combine meetings into recaps, export, share, and create Visual Notes.",
   "author": {
     "name": "Meeting.ai",
@@ -11,6 +11,7 @@
   "homepage": "https://meeting.ai",
   "repository": "https://github.com/meeting-ai/memo-claude-plugin",
   "license": "Apache-2.0",
+  "privacyPolicyUrl": "https://meeting.ai/privacy",
   "keywords": [
     "meetings",
     "meeting-notes",
