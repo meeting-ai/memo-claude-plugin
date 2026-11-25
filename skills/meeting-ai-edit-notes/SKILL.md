@@ -43,14 +43,11 @@ This is the workflow for "summarize this week's meetings", "recap the Acme proje
 3. Write the combined summary. A good shape is: what happened, decisions made, open
    questions, and action items with owners, each item naming the meeting it came from.
 4. Reply with the recap in chat. That is the deliverable.
-5. Then offer to turn it into a Visual Note: pass the combined recap as `content` to
-   `recipe_visual_note`. It creates a new one-page image in the user's Drive and touches
-   none of the meetings. See the `meeting-ai-visual-notes` skill.
-6. If the user wants a file instead, use `meetings_export` on the individual meetings.
+5. If the user wants a file instead, use `meetings_export` on the individual meetings.
 
 Never write a combined recap into one of the source meetings. Each meeting's notes are the
 record of that meeting, and overwriting a section with a recap of other meetings destroys
-that record. The recap belongs in the reply or in a Visual Note, not inside a meeting.
+that record. The recap belongs in the reply, not inside a meeting.
 
 ## Sharing the result
 
