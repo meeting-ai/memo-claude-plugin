@@ -48,7 +48,7 @@ Once connected, ask in plain words. Three to start with:
 
 > Recap all my Acme meetings from September into one summary: decisions, open questions, and action items with owners.
 
-> Turn my Q3 planning meeting into a one-page Visual Note.
+> What did we decide about pricing in last week's meetings?
 
 ## Everything else
 
@@ -58,11 +58,9 @@ and switch between your workspaces. You do not need to
 learn any of that up front. Ask for what you want in plain words, and Claude uses the right
 tool or tells you it is done in the web app instead.
 
-Some actions, such as recording, Visual Notes, and media generation, use your Meeting.ai
+Some actions, such as recording or redrawing a meeting's visual note, use your Meeting.ai
 subscription or coins. Claude mentions this before doing one. If your account has
 no active subscription or coins, Claude tells you and stops.
-A long generation can continue after Claude's reply. It can be charged, and Meeting.ai
-saves the file to your Drive when it is ready. A Drive limit can stop that save.
 Exports cost no coins. An export saves a file to your Drive, so a storage-debt limit can
 refuse it.
 
@@ -76,7 +74,7 @@ link. It removes the PIN only if you ask.
 |---|---|
 | `.claude-plugin/plugin.json` | Plugin manifest, including the Meeting.ai MCP server at `https://mcp.meeting.ai/mcp` |
 | `.claude-plugin/marketplace.json` | Lets Claude Code install the plugin straight from this repository |
-| `skills/` | The guidance Claude follows for recording, editing notes, Visual Notes, setup, and everything else |
+| `skills/` | The guidance Claude follows for recording, editing notes, setup, and everything else |
 
 The MCP server itself is a hosted service operated by Meeting.ai. This repository contains no
 server code and no credentials.

@@ -32,8 +32,7 @@ recording in the web app before exploring.
 Every tool reads from the connection's active workspace. If the user belongs to several
 workspaces, show them the list from `workspace_list` and use `workspace_set_active` to
 switch the default. This changes only this connection; it never moves any data. For a
-one-off call in another workspace, pass `workspace_id`. `recipe_visual_note`
-does not accept it: it always saves to the active workspace.
+one-off call in another workspace, pass `workspace_id`.
 
 ## Common problems
 
